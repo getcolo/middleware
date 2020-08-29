@@ -55,5 +55,13 @@ function callbackUrl(req, res) {
 
 Currently, Colo supports the following provider strategies:
 
-1. Slack
-2. Google
+- Slack
+- Google
+
+### In Development
+
+- Jira
+- GitHub
+- Salesforce
+- Facebook
+- Instagram

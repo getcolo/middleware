@@ -1,7 +1,7 @@
-exports.getAccessToken(httpReq) {
+exports.getAccessToken = ((httpReq) => {
     console.log(httpReq, 'integration')
-}
+})
 
-exports.genAndStoreStateValue() {
+exports.genAndStoreStateValue = () => {
     console.log('genAndStoreStateValue');
 }
