@@ -64,8 +64,9 @@ Currently, Colo supports the following provider strategies:
 
 #### Inputs
 
-`httpReq` - an express HTTP request object that is passed in as a parameter to the route method.
-`config` - an object containing the following structure:
+- `httpReq` - an express HTTP request object that is passed in as a parameter to the route method.
+
+- `config` - an object containing the following structure:
 ```javascript
 { 
     integration: String,
