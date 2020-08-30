@@ -1,4 +1,4 @@
-# Colo.js
+# middleware
 
 The purpose of this library is to provide a easy-to-use, universal OAuth abstraction to 3rd 
 party identity providers. With Colo, you will be able to abstract away messy OAuth protocol 
