@@ -2,21 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const middleware = require('@getcolo/middleware');
 
+require('dotenv').config()
+
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Function to handle the root path
 app.get('/', async function(req, res) {
-    accessToken = middleware.getAccessToken(req, { 
+    const accessToken = middleware.getAccessToken(req, { 
         integration: 'slack',
-        client_id: process.env.SLACK_CLIENT_ID,
-        client_secret: process.env.SLACK_CLIENT_SECRET,
+        clientId: process.env.SLACK_CLIENT_ID,
+        clientSecret: process.env.SLACK_CLIENT_SECRET,
         redirectUrl: 'http://localhost:3000',
     })
 
     // store accessToken in your db
-    console.log(accessToken)
+    console.log('got access token', accessToken)
 
     res.send('hello world')    
 });
