@@ -1,6 +1,6 @@
 {
   "name": "@getcolo/middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The purpose of this library is to provide a easy-to-use, universal OAuth abstraction to 3rd party identity providers. Currently, the middleware package is scoped to let you retrieve access tokens from 3rd-party providers.",
   "main": "index.js",
   "scripts": {
