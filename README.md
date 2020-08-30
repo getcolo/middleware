@@ -104,4 +104,4 @@ An example of a `customData` object is the below slack provider's `customData` o
 
 ## Questions
 
-Email [shreyas@getcolo.dev](mailto:shreyas@getcolo.dev) with any questions, , contribution ideas, concerns or feedback about the repository.
+Email [shreyas@getcolo.dev](mailto:shreyas@getcolo.dev) with any questions, , contribution ideas, concerns or feedback about the repository. 
