@@ -38,6 +38,10 @@ app.get('/callback_handler', async function(req, res) {
 });
 ```
 
+There is also a complementary React library package, [@getcolo/colo-link](https://github.com/) that helps retrieve the appropriate authorization URL for the end-user to be directed to.
+
+For more information on using this library, check out the example directory in this repository. 
+
 ## Supported Providers
 
 Currently, Colo supports the following provider strategies:
@@ -97,3 +101,7 @@ An example of a `customData` object is the below slack provider's `customData` o
     enterprise: null
 }
 ```
+
+## Questions
+
+Email [shreyas@getcolo.dev](mailto:shreyas@getcolo.dev) with any questions, , contribution ideas, concerns or feedback about the repository.
