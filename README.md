@@ -8,7 +8,11 @@ authorized requests.
 ## Installation
 
 ```bash
-yarn add @colo
+# For getting the React library
+yarn add @getcolo/colo-link
+
+# For getting the middleware library
+yarn add @getcolo/middleware
 ```
 
 ## Quickstart
@@ -65,3 +69,16 @@ Currently, Colo supports the following provider strategies:
 - Salesforce
 - Facebook
 - Instagram
+
+
+## ColoLink
+
+ColoLink is the React button component that directs the end-user to the appropriate authorization URL. It has the following parameters:
+
+- `integration` - the provider you're connecting with i.e. 'slack'
+- `redirectUrl` - the callback url the end-user goes to after authorizing your app access. This endpoint will also be responsible for getting the user access token
+- `generateStateValueUrl` - the url that generates and stores a unique state value for the end-user 
+- `userId` - a unique id for the end-user (can be their email; doesn't have to be the pk in the database)
+
+
+## middleware

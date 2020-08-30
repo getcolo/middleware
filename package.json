@@ -1,40 +1,16 @@
 {
-  "name": "@getcolo/colo",
-  "version": "1.0.4",
-  "description": "The purpose of this library is to provide a easy-to-use, universal OAuth abstraction to 3rd  party identity providers. With Colo, you will be able to abstract away messy OAuth protocol  logic when implementing integrations with 3rd party systems. The main use case right now is linking an existing user's account to a 3rd-party provider with the motivation of being able to authorized requests.",
+  "name": "@getcolo/middleware",
+  "version": "1.0.11",
+  "description": "The purpose of this library is to provide a easy-to-use, universal OAuth abstraction to 3rd  party identity providers. With Colo, you will be able to abstract away messy OAuth protocol logic when implementing integrations with 3rd party systems. The main use case right now is linking an existing user's account to a 3rd-party provider with the motivation of being able to authorized requests.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Shreyas Jaganmohan",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/drshrey/colo.js.git"
-  },
-  "peerDependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "babel-core": "^7.0.0-0",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^3.5.1",
-    "path": "^0.12.7",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "style-loader": "^1.1.3",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^3.2.1"
   },
   "dependencies": {
     "axios": "^0.20.0"
