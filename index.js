@@ -6,41 +6,34 @@ const PROVIDER_TO_ACCESS_TOKEN_URL = {
 }
 
 exports.getAccessToken = ((httpReq, config) => {
-    // get authorization code from httpReq
-    // call access token url for provider with code, client_secret, etc
-    // get access token and return this
-    console.log(httpReq.query.code, config)
-
     const code = httpReq.query.code
-    let accessToken = null
+    let access_token = null
 
     switch(config.integration){
         case 'slack':
-            accessToken = getSlackAccessToken(code, config.clientId, config.clientSecret, config.redirectUrl)
+            accessToken = getSlackAccessToken(code, config.client_id, config.client_secret, config.redirectUrl)
             break;
         default:
             console.log('no provider found')
             break;
     }
-
-    console.log(config.integration, config.clientSecret)
-    return accessToken
+    return access_token 
 })
 
-exports.genAndStoreStateValue = () => {
+exports.genAndStoreStateValue = (user_id) => {
+    // TODO: write a method that generates and stores a state value mapped
+    // to a userId
     console.log('genAndStoreStateValue');
 }
 
-const getSlackAccessToken = (code, clientId, clientSecret, redirectUrl) => {
-    console.log('getSlackAccessToken', code, clientId, clientSecret, redirectUrl)
-    const encodedClientIdAndSecret = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
-
+const getSlackAccessToken = (code, client_id, client_secret, redirect_url) => {
+    console.log('getSlackAccessToken', code, client_id, client_secret, redirect_url)
     return axios.post(PROVIDER_TO_ACCESS_TOKEN_URL['slack'], qs.stringify({
         'code': code,
-        'redirect_uri': redirectUrl,
+        'redirect_uri': redirect_url,
         'grant_type': 'authorization_code',
-        'client_id': clientId,
-        'client_secret': clientSecret,
+        'client_id': client_id,
+        'client_secret': client_secret,
     }), headers={
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'

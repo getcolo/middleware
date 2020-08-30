@@ -7,8 +7,6 @@ authorized requests.
 
 ## Installation
 
-
-
 ```bash
 # For getting the middleware library
 yarn add @getcolo/middleware
@@ -59,3 +57,43 @@ Currently, Colo supports the following provider strategies:
 ## API Reference
 
 ### getAccessToken
+
+#### Inputs
+
+`httpReq` - an express HTTP request object that is passed in as a parameter to the route method.
+`config` - an object containing the following structure:
+```javascript
+{ 
+    integration: String,
+    client_id: String,
+    client_secret: String,
+    redirect_url: String,
+}
+```
+
+#### Output
+
+```javascript
+{
+    access_token: '',
+    custom_data: {
+        // provider specific metadata returned in the 
+        // response
+    },
+}
+```
+
+An example of a `customData` object is the below slack provider's `customData` object:
+```javascript
+{
+    ok: true,
+    app_id: 'A018WDKCCTH',
+    authed_user: { id: 'U0194DS14MC' },
+    scope: 'calls:read,calls:write',
+    token_type: 'bot',
+    access_token: 'xoxb-1317404487779-1329856079905-H7cRXH9V7XPZSrULCYrRb2oY',
+    bot_user_id: 'U019PR62BSM',
+    team: { id: 'T019BBWEBNX', name: 'colo-dev' },
+    enterprise: null
+}
+```
