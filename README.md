@@ -7,52 +7,37 @@ authorized requests.
 
 ## Installation
 
-```bash
-# For getting the React library
-yarn add @getcolo/colo-link
 
+
+```bash
 # For getting the middleware library
 yarn add @getcolo/middleware
 ```
 
 ## Quickstart
 
-In your API, create a route for generating the state value, which we will use
-to relate the user back to.
-```javascript
-import { generateStateValue } from '@colo/middleware';
-
-
-function genStateValueRouteHandler(req, res) {
-    stateValue = generateStateValue(req.body.user_id);
-    res.send(200)
-}
-```
-
-In your React app, where you will ask the end-user to link their account with a 3rd party provider, include this:
-
-```javascript
-import ColoLink from '@colo/ColoLink';
-
-<ColoLink
-    integration={'your 3rd party provider e.g. slack'}
-    genStateUrl={'https://your-state-url.com/generate-state'}
-    redirectUrl={'https://your-callback-url.com/callback'}
-    userId={'johnsmith@gmail.com'}
-/>
-```
-
 In your callback url method (server-side), include this:
 
 ```javascript
-import { getAccessToken } from '@colo/middleware';
+const middleware = require('@getcolo/middleware');
 
-// ...
 
-function callbackUrl(req, res) {
-    const access_token = getAccessToken(req, 'integration')
-    // store access token in your db (encrypted appropriately of course, please)
-}
+app.get('/callback_handler', async function(req, res) {
+    const accessToken = middleware.getAccessToken(req, { 
+        provider: 'slack',
+        // define your OAuth app client_id in an env var and reference it here
+        clientId: process.env.SLACK_CLIENT_ID,
+        // define your OAuth app client_secret in an env var and reference it here
+        clientSecret: process.env.SLACK_CLIENT_SECRET,
+        redirectUrl: 'http://localhost:3000',
+    })
+    
+    console.log('got access token!', accessToken)
+
+    // store accessToken in your db for later use
+
+    res.send('hello world')    
+});
 ```
 
 ## Supported Providers
@@ -60,10 +45,10 @@ function callbackUrl(req, res) {
 Currently, Colo supports the following provider strategies:
 
 - Slack
-- Google
 
 ### In Development
 
+- Google
 - Jira
 - GitHub
 - Salesforce
