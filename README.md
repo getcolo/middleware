@@ -8,7 +8,6 @@ authorized requests.
 ## Installation
 
 ```bash
-# For getting the middleware library
 yarn add @getcolo/middleware
 ```
 
