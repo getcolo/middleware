@@ -10,15 +10,15 @@ app.use(bodyParser.json());
 
 // Function to handle the root path
 app.get('/', async function(req, res) {
-    const accessToken = middleware.getAccessToken(req, { 
+    const access_token = middleware.getAccessToken(req, { 
         integration: 'slack',
-        clientId: process.env.SLACK_CLIENT_ID,
-        clientSecret: process.env.SLACK_CLIENT_SECRET,
-        redirectUrl: 'http://localhost:3000',
+        client_id: process.env.SLACK_CLIENT_ID,
+        client_secret: process.env.SLACK_CLIENT_SECRET,
+        redirect_url: 'http://localhost:3000',
     })
 
     // store accessToken in your db
-    console.log('got access token', accessToken)
+    console.log('got access token', access_token)
 
     res.send('hello world')    
 });
