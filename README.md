@@ -2,8 +2,7 @@
 
 The purpose of this library is to provide a easy-to-use, universal OAuth abstraction to 3rd 
 party identity providers. With Colo, you will be able to abstract away messy OAuth protocol 
-logic when implementing integrations with 3rd party systems. The main use case right now is linking an existing user's account to a 3rd-party provider with the motivation of being able to
-authorized requests.
+logic when implementing integrations with 3rd party systems. The main use case right now is linking an existing user's account to a 3rd-party provider with the motivation of being able to make authorized requests.
 
 ## Installation
 
