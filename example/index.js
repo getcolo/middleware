@@ -9,18 +9,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Function to handle the root path
-app.get('/', async function(req, res) {
+app.get('/slack', async function(req, res) {
     const access_token = middleware.getAccessToken(req, { 
         integration: 'slack',
         client_id: process.env.SLACK_CLIENT_ID,
         client_secret: process.env.SLACK_CLIENT_SECRET,
         redirect_url: 'http://localhost:3000',
-    })
+    })    
 
     // store accessToken in your db
-    console.log('got access token', access_token)
+    console.log('got slack user access token', access_token)
 
-    res.send('hello world')    
+    res.send(access_token)    
+});
+
+app.get('/google', async function(req, res) {
+    const access_token = middleware.getAccessToken(req, { 
+        integration: 'google',
+        client_id: process.env.GOOGLE_CLIENT_ID,
+        client_secret: process.env.GOOGLE_CLIENT_SECRET,
+        redirect_url: 'http://localhost:3000',
+    })    
+
+    // store accessToken in your db
+    console.log('got google user access token', access_token)
+
+    res.send(access_token)    
 });
 
 app.listen(8080, function() {

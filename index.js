@@ -3,6 +3,7 @@ const qs = require('qs');
 
 const PROVIDER_TO_ACCESS_TOKEN_URL = {
     'slack': 'https://slack.com/api/oauth.v2.access',
+    'google': 'https://oauth2.googleapis.com/token',
 }
 
 exports.getAccessToken = ((httpReq, config) => {
@@ -11,8 +12,11 @@ exports.getAccessToken = ((httpReq, config) => {
 
     switch(config.integration){
         case 'slack':
-            accessToken = getSlackAccessToken(code, config.client_id, config.client_secret, config.redirectUrl)
+            accessToken = getSlackAccessToken(code, config.client_id, config.client_secret, config.redirect_url)
             break;
+        case 'google':
+            accessToken = getGoogleAccessToken(code, config.client_id, config.client_secret, config.redirect_url)
+            break;            
         default:
             console.log('no provider found')
             break;
@@ -27,7 +31,6 @@ exports.genAndStoreStateValue = (user_id) => {
 }
 
 const getSlackAccessToken = (code, client_id, client_secret, redirect_url) => {
-    console.log('getSlackAccessToken', code, client_id, client_secret, redirect_url)
     return axios.post(PROVIDER_TO_ACCESS_TOKEN_URL['slack'], qs.stringify({
         'code': code,
         'redirect_uri': redirect_url,
@@ -39,11 +42,27 @@ const getSlackAccessToken = (code, client_id, client_secret, redirect_url) => {
         'Accept': 'application/json'
     })
     .then((response) => {
-        console.log(response.data)
         return response.data
     })
     .catch((err) => {
-        console.log(err)
         return err
     })
+}
+
+const getGoogleAccessToken = (code, client_id, client_secret, redirect_url) => {
+    return axios.post(PROVIDER_TO_ACCESS_TOKEN_URL['google'], {
+        'code': code,
+        'redirect_uri': redirect_url,
+        'grant_type': 'authorization_code',
+        'client_id': client_id,
+        'client_secret': client_secret,
+    }, headers={
+        'Accept': 'application/json'
+    })
+    .then((response) => {
+        return response.data
+    })
+    .catch((err) => {
+        return err
+    })  
 }
