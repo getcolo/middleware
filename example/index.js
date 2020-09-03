@@ -37,6 +37,32 @@ app.get('/google', async function(req, res) {
     res.send(access_token)    
 });
 
+app.get('/facebook', async function(req, res) {
+    const access_token = middleware.getAccessToken(req, {
+        integration: 'facebook',
+        client_id: process.env.FACEBOOK_CLIENT_ID,
+        client_secret: process.env.FACEBOOK_CLIENT_SECRET,
+        redirect_url: 'http://localhost:8080/facebook'
+    })
+
+    console.log('got facebook user access token', access_token)
+
+    res.send(access_token)
+})
+
+app.get('/instagram', async function(req, res) {
+    const access_token = middleware.getAccessToken(req, {
+        integration: 'instagram',
+        client_id: process.env.INSTAGRAM_CLIENT_ID,
+        client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
+        redirect_url: 'http://localhost:3000'
+    })
+
+    console.log('got instagram user access token', access_token)
+
+    res.send(access_token)
+})
+
 app.listen(8080, function() {
     console.log('Example server is listening on port 8080')
 });
